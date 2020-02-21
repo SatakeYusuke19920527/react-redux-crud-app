@@ -1,13 +1,22 @@
-import React from 'react'
-import logo from './logo.svg'
+import React, {Component} from 'react'
 import './App.css'
 
-function App () {
-  return (
-    <div>
-        <p>Hello world</p>
+class App extends Component {
+  render(){
+  return(
+    <div className="foo">
+      <h1>Hello world</h1>
+      <label>bar:</label>
+      <input
+        type="text"
+        title="onClick"
+        onChange={() => {
+        console.log("test");
+      }}
+      />
     </div>
   )
+    }
 }
 
-export default App
+export default App;
