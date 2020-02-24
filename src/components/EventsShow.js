@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Field, reduxForm} from 'redux-form'
 import { Link } from 'react-router-dom';
 import {getEvent, deleteEvent, putEvent} from '../actions';
+import Button from '@material-ui/core/Button';
 
 class EventsShow extends Component {
 	
@@ -48,9 +49,10 @@ class EventsShow extends Component {
 					<Field label="Body" name="body" type="text" component={this.renderField}/>
 				</div>
 				<div>
-					<input type="submit" value="Submit" disabled={pristine || submitting || invalid} />
-					<Link to="/">Cancel</Link>
-					<Link to="/" onClick={() => {this.onDeleteClick()}}>Delete</Link>
+					
+					<Button type="submit" value="Submit" color="secondary" disabled={pristine || submitting || invalid} >送信</Button>
+					<Link to="/"><Button type="submit" color="primary"  >キャンセル</Button></Link>
+					<Link to="/" onClick={() => {this.onDeleteClick()}}><Button type="submit" color="primary"  >Delete</Button></Link>
 				</div>
 			</form>
 		);

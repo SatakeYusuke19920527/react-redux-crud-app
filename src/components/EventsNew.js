@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Field, reduxForm} from 'redux-form'
 import { Link } from 'react-router-dom';
-import {postEvent} from '../actions';
+import { postEvent } from '../actions';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class EventsNew extends Component {
 	
@@ -15,10 +17,13 @@ class EventsNew extends Component {
 		const { input, label, type, meta: { touched, error } } = field;
 
 		return (
-			<div>
-				<input {...input} placeholder={label} type={type} />
-				{touched && error && <span>{error}</span>}
-			</div>
+				<TextField
+					label={label}
+					type={type}
+					fullWidth={true}
+					errortext={touched && error}
+					{...input}
+				/>
 		)
 	}
 
@@ -37,8 +42,8 @@ class EventsNew extends Component {
 					<Field label="Body" name="body" type="text" component={this.renderField}/>
 				</div>
 				<div>
-					<input type="submit" value="Submit" disabled={pristine || submitting || invalid} />
-					<Link to="/">Cancel</Link>
+					<Button type="submit" value="Submit" color="secondary" disabled={pristine || submitting || invalid} >送信</Button>
+					<Link to="/"><Button type="submit" color="primary"  >キャンセル</Button></Link>
 				</div>
 			</form>
 		);
@@ -54,7 +59,6 @@ const validate = values => {
 	if (!values.body) {
 		errors.body = "Enter a body, please.";
 	}
-
 	return errors;
 }
 const mapDispatchToProps = { postEvent };
