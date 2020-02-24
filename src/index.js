@@ -10,7 +10,6 @@ import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-
 const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
